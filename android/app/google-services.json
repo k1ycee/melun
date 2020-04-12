@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "161719535554",
+    "firebase_url": "https://covid-relief-777c9.firebaseio.com",
+    "project_id": "covid-relief-777c9",
+    "storage_bucket": "covid-relief-777c9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161719535554:android:1d491bb8dae3d37686785b",
+        "android_client_info": {
+          "package_name": "com.example.big_field_data"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161719535554-cbpp8asahdfkn6ur4hhb1odc7n4osiqp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.big_field_data",
+            "certificate_hash": "c5ec67e35a73be4719d0d246ecc8e032d4d68a7a"
+          }
+        },
+        {
+          "client_id": "161719535554-si9h2400g3vvgv1lfmh7m28btq5dha8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB17xeJtB7zp0-9rvURQCwPcuFYpzxyk_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161719535554-si9h2400g3vvgv1lfmh7m28btq5dha8e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
