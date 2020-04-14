@@ -15,7 +15,7 @@ class Auth{
       _user = await _activity.getUser(user.uid);
     }
   }
-
+// Signing up the user with email, password and fullname 
   Future signUpUser({String email, String password, String fullname})async{
       try{
         AuthResult result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
