@@ -5,15 +5,11 @@ class User{
   final String id;
   final String fullname;
   final String userImage;
-  final String password;
-  final String email;
 
-  User({this.userImage,this.id, this.fullname,this.email,this.password});
+  User({this.userImage,this.id, this.fullname});
     User.fromData(Map<String,dynamic> data)
     :   id = data["id"],
         fullname = data["fullname"],
-        email = data["email"],
-        password = data["password"],
         userImage = data["userImage"];
 
 
@@ -22,9 +18,7 @@ class User{
     return {
       'id':id,
       'fullname':fullname,
-      'userImage': userImage,
-      'email': email,
-      'password': password
+      'userImage': userImage
     };
   }
 }

@@ -14,19 +14,18 @@ class SignUpViewModel extends BaseModel{
 
     Future signup(email, password, fullname)async{
       setBusy(true);
-      var result = await _auth.signUpUser(
-        email:email, 
-        password:password, 
-        fullname: fullname);
+      var result = await _auth.signUpUser(email: email, password: password, fullname: fullname);
       setBusy(false);
-      if (result is bool){
-        if(result){
-          _navegate.navigateTo(DashboardRoute);
-    }else{
-      return "What has happened";
+      if(result is bool){
+      if(result){
+        _navegate.navigateTo(DashboardRoute);
+      }
+      else{
+        print('Well errors are looming somewhere find it');
+      }
     }
-  }else{
-    return "This is just ackward";
-  }  
+    else{
+      print('This was not supposed to happen');
+    }
   }
 }
