@@ -46,13 +46,13 @@ class SignUp extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 BusyButton(
+                  busy: model.busy,
+                  title: 'SignUp',
                   onPressed: () {model.signup(
                     emailController.text, 
                     passwordController.text, 
                     fullnameController.text);
                   },
-                  busy: model.busy,
-                  title: 'SignUp',
                 )
               ],
             ),

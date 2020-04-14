@@ -1,20 +1,20 @@
 
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class User{
   final String id;
   final String fullname;
   final String userImage;
-  final DocumentReference reference;
+  final String password;
+  final String email;
 
-  User({this.userImage, this.reference, this.id, this.fullname});
-    User.fromData(Map<String,dynamic> data, {this.reference})
+  User({this.userImage,this.id, this.fullname,this.email,this.password});
+    User.fromData(Map<String,dynamic> data)
     :   id = data["id"],
         fullname = data["fullname"],
+        email = data["email"],
+        password = data["password"],
         userImage = data["userImage"];
-    User.fromSnapshot(DocumentSnapshot snapshot)
-      : this.fromData(snapshot.data, reference: snapshot.reference);
 
 
 
@@ -22,7 +22,9 @@ class User{
     return {
       'id':id,
       'fullname':fullname,
-      'userImage': userImage
+      'userImage': userImage,
+      'email': email,
+      'password': password
     };
   }
 }

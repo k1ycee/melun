@@ -1,13 +1,18 @@
 // This is the database class the user's extra informations would be here
 
+import 'dart:async';
+
 import 'package:big_field_data/models/funds_model.dart';
 import 'package:big_field_data/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 
+
 class UserActivity{
   final CollectionReference reference = Firestore.instance.collection('User');
   final CollectionReference fundsReference = Firestore.instance.collection('Fundings');
+  final StreamController<List<FundsModel>> _fundsStreamsController = 
+  StreamController<List<FundsModel>>.broadcast();
 
 // This function inserts the user's Fullname to the firestore database
     Future createUser(User user)async{
@@ -69,14 +74,13 @@ class UserActivity{
   }
 
 
-  // This function fetches information to populate the UI proper this is a one off call like to an API
+  // This function fetches information to populate the UI proper this is a one off call like to an API 
   Future getFundsInfo() async{
     try{
       var fundsDocumentSnapshot = await fundsReference.getDocuments();
       if (fundsDocumentSnapshot.documents.isNotEmpty){
         return fundsDocumentSnapshot.documents
           .map((snapshot) => FundsModel.fromData(snapshot.data))
-          .where((mapped)=> mapped != null)
           .toList();
       }
     }
@@ -89,4 +93,18 @@ class UserActivity{
 
   }
 
+  // This function gets the fundsInfo in realtime 
+
+  Stream listenToFundsRealtime(){
+    fundsReference.snapshots().listen((fund) {
+      if (fund.documents.isNotEmpty){
+        var zefunds = fund.documents
+          .map((snapshot) => FundsModel.fromData(snapshot.data))
+          .toList();
+
+      _fundsStreamsController.add(zefunds);
+      }
+    });
+    return _fundsStreamsController.stream;
+  }
 }
