@@ -7,6 +7,7 @@ import 'package:get_it/get_it.dart';
 
 GetIt locator = GetIt.instance;
 
+// This would be used for dependency injection :)
 
 void locatorSetup(){
   locator.registerLazySingleton(() => Auth());
