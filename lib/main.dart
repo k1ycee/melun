@@ -1,3 +1,4 @@
+import 'package:big_field_data/Views/UI/create_funds.dart';
 import 'package:big_field_data/Views/UI/sign_up.dart';
 import 'package:big_field_data/Views/UI/start_up.dart';
 import 'package:big_field_data/locator.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: SignUp(),
+      home: CreateFunds(),
       onGenerateRoute: generateRoute,
       navigatorKey: locator<NavigationService>().navigationKey,
     );

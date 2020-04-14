@@ -1,3 +1,4 @@
+import 'package:big_field_data/Views/UI/create_funds.dart';
 import 'package:big_field_data/Views/UI/dash_board.dart';
 import 'package:big_field_data/Views/UI/sign_in.dart';
 import 'package:big_field_data/Views/UI/sign_up.dart';
@@ -28,6 +29,11 @@ Route<dynamic> generateRoute(RouteSettings settings){
       return _getPageRoute(
         routeName: settings.name,
         viewToShow: StartUp(),
+      );
+    case CreateFundsRoute:
+      return _getPageRoute(
+        routeName: settings.name,
+        viewToShow: CreateFunds(),
       );
     default:
       return MaterialPageRoute(
