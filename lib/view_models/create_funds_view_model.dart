@@ -1,6 +1,5 @@
 
 import 'package:big_field_data/auth/reg_update.dart';
-import 'package:big_field_data/constants/routes.dart';
 import 'package:big_field_data/locator.dart';
 import 'package:big_field_data/models/funds_model.dart';
 import 'package:big_field_data/services/navigation_services.dart';
@@ -15,7 +14,7 @@ class CreateFundsViewModel extends BaseModel{
   final UserActivity user = locator<UserActivity>();
   
 
-  Future addFunds({@required String title,@required int amount, @required String days})async{
+  Future addFunds({@required String title,@required dynamic amount, @required String days})async{
     setBusy(true);
     var result = await user.createFund(FundsModel(
       amount: amount, 

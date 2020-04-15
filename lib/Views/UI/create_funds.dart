@@ -25,7 +25,7 @@ class CreateFunds extends StatelessWidget {
             if(!model.busy){
               model.addFunds(
                 title: titleController.text, 
-                amount: amountController.hashCode, 
+                amount: amountController.text, 
                 days: daysController.text);
             }
           }, 

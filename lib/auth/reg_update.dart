@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:big_field_data/models/dashboard_model.dart';
 import 'package:big_field_data/models/funds_model.dart';
 import 'package:big_field_data/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,8 +12,8 @@ import 'package:flutter/services.dart';
 class UserActivity{
   final CollectionReference reference = Firestore.instance.collection('User');
   final CollectionReference fundsReference = Firestore.instance.collection('Fundings');
-  final StreamController<List<FundsModel>> _fundsStreamsController = 
-  StreamController<List<FundsModel>>.broadcast();
+  final StreamController<List<DashModel>> _dashStreamsController = 
+  StreamController<List<DashModel>>.broadcast();
 
 // This function inserts the user's Fullname to the firestore database
     Future createUser(User user)async{
@@ -99,12 +100,13 @@ class UserActivity{
     fundsReference.snapshots().listen((fund) {
       if (fund.documents.isNotEmpty){
         var zefunds = fund.documents
-          .map((snapshot) => FundsModel.fromData(snapshot.data))
+          .map((snapshot) => DashModel.fromData(snapshot.data))
+          .where((mappedItem) => mappedItem != null)
           .toList();
 
-      _fundsStreamsController.add(zefunds);
+      _dashStreamsController.add(zefunds);
       }
     });
-    return _fundsStreamsController.stream;
+    return _dashStreamsController.stream;
   }
 }
