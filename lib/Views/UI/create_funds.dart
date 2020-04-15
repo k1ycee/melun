@@ -19,7 +19,7 @@ class CreateFunds extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelProvider<CreateFundsViewModel>.withConsumer(
       viewModel: CreateFundsViewModel(), 
-      builder: (context ,model ,child) => Scaffold(
+      builder: (context, model, child) => Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: (){
             if(!model.busy){

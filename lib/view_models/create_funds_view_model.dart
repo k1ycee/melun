@@ -30,8 +30,8 @@ class CreateFundsViewModel extends BaseModel{
     }
     else{
       SnackBar(content: Text('Post Created Successfully !'), backgroundColor: Colors.green,);
+      
     }
-    navigate.navigateTo(DashboardRoute);
+    navigate.pop();
   }
-
 }
