@@ -1,7 +1,7 @@
 class FundsModel{
   final String projectName;
   final String days;
-  final int amount;
+  final dynamic amount;
   final String id;
   final String imgUrl;
 

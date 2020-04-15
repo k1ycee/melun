@@ -1,12 +1,12 @@
 import 'package:big_field_data/Views/shared/uiHelpers.dart';
-import 'package:big_field_data/models/funds_model.dart';
+import 'package:big_field_data/models/dashboard_model.dart';
 import 'package:flutter/material.dart';
 
 
 
 class DashCard extends StatelessWidget {
-  final FundsModel funds;
-  const DashCard({this.funds});
+  final DashModel dash;
+  const DashCard({this.dash});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,16 +26,16 @@ class DashCard extends StatelessWidget {
                 child: Container(height:240, width:400,color: Colors.black, child: Image.network('https://picsum.photos/200/300')),
               ),
               verticalSpaceTiny,
-              Text('Project Name should be here'),
+              Text('${dash.projectName}'),
               verticalSpaceTiny,
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Text('Project Name'),
-                    Text('AMount'),
-                    Text('Days')
+                    Text('${dash.amt}'),
+                    Text('${dash.days}'),
+                    Text('${dash.name}')
                 ],),
               )
           ],),
