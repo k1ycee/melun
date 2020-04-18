@@ -11,9 +11,14 @@ import 'package:flutter/services.dart';
 
 class UserActivity{
   final CollectionReference reference = Firestore.instance.collection('User');
+
   final CollectionReference fundsReference = Firestore.instance.collection('Fundings');
-  final StreamController<List<DashModel>> _dashStreamsController = 
-  StreamController<List<DashModel>>.broadcast();
+
+  final StreamController<List<GeneralFundsModel>> _dashStreamsController = 
+  StreamController<List<GeneralFundsModel>>.broadcast();
+  
+  final StreamController<List<UserFundsModel>> _userStreamsController = 
+  StreamController<List<UserFundsModel>>.broadcast();
 
 // This function inserts the user's Fullname to the firestore database
     Future createUser(User user)async{
@@ -60,7 +65,7 @@ class UserActivity{
 
 // This function is where the user creates their funds post 
 
-  Future createFund(FundsModel fund) async{
+  Future createFund(UserFundsModel fund) async{
 
      try{
       await fundsReference.add(fund.toJson());
@@ -76,31 +81,28 @@ class UserActivity{
 
 
   // This function fetches information to populate the UI proper this is a one off call like to an API 
-  Future getFundsInfo() async{
-    try{
-      var fundsDocumentSnapshot = await fundsReference.getDocuments();
-      if (fundsDocumentSnapshot.documents.isNotEmpty){
-        return fundsDocumentSnapshot.documents
-          .map((snapshot) => FundsModel.fromData(snapshot.data))
+  Stream userCreatedFunds(){
+   fundsReference.snapshots().listen((fund) {
+      if (fund.documents.isNotEmpty){
+        var mefunds = fund.documents
+          .map((snapshot) => UserFundsModel.fromData(snapshot.data, snapshot.documentID))
+          .where((mappedItem) => mappedItem != null)
           .toList();
+
+      _userStreamsController.add(mefunds);
       }
-    }
-    catch(e){
-      if(e is PlatformException){
-        return e.message;
-      }
-      return e.toString();
-    }
+    });
+    return _userStreamsController.stream;
 
   }
 
   // This function gets the fundsInfo in realtime 
 
   Stream listenToFundsRealtime(){
-    fundsReference.snapshots().listen((fund) {
+    fundsReference.snapshots().listen((fund){
       if (fund.documents.isNotEmpty){
         var zefunds = fund.documents
-          .map((snapshot) => DashModel.fromData(snapshot.data))
+          .map((snapshot) => GeneralFundsModel.fromData(snapshot.data, snapshot.documentID))
           .where((mappedItem) => mappedItem != null)
           .toList();
 

@@ -1,26 +1,29 @@
-class FundsModel{
+class UserFundsModel{
+  final String projectPic;
+  final String usrImgUrl;
+  final dynamic projectAmount;
+  final String name;
   final String projectName;
-  final String days;
-  final dynamic amount;
-  final String id;
-  final String imgUrl;
+  final String documentId;
 
-FundsModel({this.projectName, this.days, this.amount,this.id,this.imgUrl});
+  UserFundsModel({this.projectPic, this.usrImgUrl, this.projectAmount, this.name, this.projectName, this.documentId});
 
-FundsModel.fromData(Map<String,dynamic> data) 
-:    projectName = data["projectName"],
-      days = data["days"],
-      amount = data["amount"],
-      imgUrl = data["imgUrl"],
-      id = data["id"];
+  UserFundsModel.fromData(Map<String, dynamic> data, String documentId)
+    :  projectPic = data["projectPic"],
+       usrImgUrl = data["usrImgUrl"],
+       projectAmount = data["projectAmount"],
+       name = data["name"],
+       documentId = documentId,
+       projectName = data["projectName"];
 
-Map<String,dynamic> toJson(){
-  return {
-    'projectName': projectName,
-    'days': days,
-    'amount': amount,
-    'id': id,
-    'imgUrl': imgUrl
-  };
- }
+
+  Map<String, dynamic> toJson(){
+    return {
+      'projectPic': projectPic,
+      'usrImgUrl': usrImgUrl,
+      'projectAmount': projectAmount,
+      'name': name,
+      'projectName': projectName
+    };
+  }
 }

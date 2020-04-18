@@ -16,11 +16,10 @@ class CreateFundsViewModel extends BaseModel{
 
   Future addFunds({@required String title,@required dynamic amount, @required String days})async{
     setBusy(true);
-    var result = await user.createFund(FundsModel(
-      amount: amount, 
-      days: days, 
+    var result = await user.createFund(UserFundsModel(
+      projectAmount: amount,  
       projectName: title, 
-      id: currentuser.id
+      documentId: currentuser.id
       ));
     setBusy(false);
 
