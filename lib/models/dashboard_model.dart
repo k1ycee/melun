@@ -1,30 +1,16 @@
-class DashModel{
-  final String imgUrl;
+class GeneralFundsModel{
+  final String projectPic;
   final String usrImgUrl;
-  final int amt;
+  final dynamic projectAmount;
   final String name;
   final String projectName;
-  final String days;
+  final String documentId;
 
-  DashModel({this.imgUrl, this.usrImgUrl, this.amt, this.name, this.days, this.projectName});
-
-
-  DashModel.fromData(Map<String, dynamic> data)
-    :  imgUrl = data["imgUrl"],
+  GeneralFundsModel.fromData(Map<String, dynamic> data, String documentId)
+    :  projectPic = data["projectPic"],
        usrImgUrl = data["usrImgUrl"],
-       amt = data["amt"],
+       projectAmount = data["projectAmount"],
        name = data["name"],
-       days = data["days"],
+       documentId = documentId,
        projectName = data["projectName"];
-
-  Map<String, dynamic> toJson(){
-    return {
-      'imgUrl': imgUrl,
-      'usrImgUrl': usrImgUrl,
-      'amt': amt,
-      'name': name,
-      'days': days,
-      'projectName': projectName
-    };
-  }
 }

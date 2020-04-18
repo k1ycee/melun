@@ -1,24 +1,22 @@
-
-
-
 class User{
-  final String id;
   final String fullname;
-  final String userImage;
+  final String imgUrl;
+  final String id;
 
-  User({this.userImage,this.id, this.fullname});
-    User.fromData(Map<String,dynamic> data)
-    :   id = data["id"],
-        fullname = data["fullname"],
-        userImage = data["userImage"];
+  User({this.fullname, this.imgUrl, this.id});
 
 
+  User.fromData(Map<String, dynamic> data)
+    :  fullname = data["fullname"],
+       id = data["id"],
+       imgUrl = data["imgUrl"];
 
-  Map<String,dynamic> toJson(){
+
+  Map<String, dynamic> toJson(){
     return {
-      'id':id,
-      'fullname':fullname,
-      'userImage': userImage
+      'fullname': fullname,
+      'id': id,
+      'imgUrl' : imgUrl
     };
   }
 }
