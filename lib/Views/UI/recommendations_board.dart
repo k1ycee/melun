@@ -17,7 +17,7 @@ class Recommendations extends StatelessWidget {
               child: model.dash != null ? 
               ListView.builder(
                 itemCount: model.dash.length,
-                itemBuilder: (context, index) => DashCard(dash: model.dash[index],)) :
+                itemBuilder: (context, index) => GestureDetector(onTap: () => model.pay(), child:DashCard(dash: model.dash[index],))) :
                 Center(child: CircularProgressIndicator(valueColor: AlwaysStoppedAnimation(Colors.blue),),)
             ),
           ],
@@ -26,3 +26,5 @@ class Recommendations extends StatelessWidget {
     );
   }
 }
+
+  

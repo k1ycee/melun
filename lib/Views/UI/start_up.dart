@@ -13,7 +13,9 @@ class StartUp extends StatelessWidget {
       builder: (context,model,child) => Scaffold(
         body:
         Stack(children: <Widget>[
-          Container(color: Colors.indigo[900],)
+          Container(color: Colors.indigo[900],),
+          Positioned( left: 64,right: 70,top:70,child: Text('COVID - 19', style: TextStyle(color: Colors.white, fontSize: 45, fontWeight: FontWeight.bold),)),
+          Positioned( left: 120,right: 70,top:130,child: Text('Relief', style: TextStyle(color: Colors.white, fontSize: 45, fontWeight: FontWeight.w300),)),
         ],)
       )
     );

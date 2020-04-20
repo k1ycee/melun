@@ -51,11 +51,14 @@ class CreateFunds extends StatelessWidget {
               verticalSpaceMedium,
               Text('Project Picture', style: TextStyle(color: Colors.blue[900]),),
               verticalSpaceTiny,
-              Container(
-                height: 250,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.grey[200],),
-                alignment: Alignment.center,
-                child: Text('Tap to upload an Image',style: TextStyle(color: Colors.grey[400]),),
+              GestureDetector(
+                  onTap: () => model.selectImage(),
+                  child: Container(
+                  height: 250,
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.grey[200],),
+                  alignment: Alignment.center,
+                  child: model.selectedImage == null ? Text('Tap to upload an Image \n This field cannot be empty',style: TextStyle(color: Colors.grey[400]),) : Image.file(model.selectedImage),
+                ),
               ),
               verticalSpaceLarge
             ],

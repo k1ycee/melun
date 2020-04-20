@@ -1,7 +1,6 @@
 import 'package:big_field_data/auth/reg_update.dart';
 import 'package:big_field_data/locator.dart';
 import 'package:big_field_data/models/funds_model.dart';
-import 'package:big_field_data/models/user_model.dart';
 import 'package:big_field_data/services/navigation_services.dart';
 import 'package:big_field_data/view_models/base_model.dart';
 
@@ -13,9 +12,6 @@ class ProjectsViewModel extends BaseModel {
 
   List<UserFundsModel> _prFunds;
   List<UserFundsModel> get prFunds => _prFunds;
-
-  User _user;
-  User get user => _user;
 
   void listenToUser(){
     setBusy(true);
@@ -29,5 +25,15 @@ class ProjectsViewModel extends BaseModel {
 
       setBusy(false);
     });
+  }
+// This popsout the dialog when user cancels 
+  void navdialog(){
+    nave.pop();
+  }
+  Future deleteFund(int index)async{
+    setBusy(true);
+    await active.deletePost(_prFunds[index].documentId);
+    setBusy(false);
+    nave.pop();
   }
 }
