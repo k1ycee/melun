@@ -19,6 +19,11 @@ class Dashboard extends StatelessWidget {
                   },
                   child: Icon(Icons.add)),
               appBar: AppBar(
+                backgroundColor: Colors.blue[900],
+                leading: CircleAvatar(backgroundColor: Colors.blue[100], radius: 20,),
+                actions: <Widget>[
+                  IconButton(icon: Icon(Icons.exit_to_app), onPressed: () => model.logOut(),),
+                ],
                 bottom: TabBar(
                   tabs: <Widget>[
                     Tab(
@@ -33,12 +38,6 @@ class Dashboard extends StatelessWidget {
                   ],
                 ),
               ),
-              drawer: Drawer(
-                child: Container(
-                  alignment: Alignment.bottomCenter,
-                  child: Text('Pffffff'),
-                ),
-              ),
               body: TabBarView(children: <Widget>[
                 Column(
                   children: <Widget>[Expanded(child: Recommendations())],
@@ -50,6 +49,8 @@ class Dashboard extends StatelessWidget {
                   children: <Widget>[Expanded(child: Projects())],
                 )
               ]),
-            )));
+           )
+           )
+      );
   }
 }

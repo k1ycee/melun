@@ -111,4 +111,8 @@ class UserActivity{
     });
     return _dashStreamsController.stream;
   }
+  // This function aids deleting of things
+  Future deletePost(String documentId) async{
+    await fundsReference.document(documentId).delete();
+  }
 }

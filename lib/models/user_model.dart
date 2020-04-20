@@ -1,14 +1,16 @@
 class User{
   final String fullname;
   final String imgUrl;
+  final String imgFilename;
   final String id;
 
-  User({this.fullname, this.imgUrl, this.id});
+  User({this.fullname, this.imgUrl, this.id, this.imgFilename});
 
 
   User.fromData(Map<String, dynamic> data)
     :  fullname = data["fullname"],
        id = data["id"],
+       imgFilename = data["imgFilename"],
        imgUrl = data["imgUrl"];
 
 
@@ -16,7 +18,8 @@ class User{
     return {
       'fullname': fullname,
       'id': id,
-      'imgUrl' : imgUrl
+      'imgUrl' : imgUrl,
+      'imgFileName': imgFilename
     };
   }
 }
